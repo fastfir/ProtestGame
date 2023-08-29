@@ -1,0 +1,13 @@
+#menutitle {
+    text-align: center
+}
+#play {
+    background-color:lightgreen;
+    color: tan;
+    border: none;
+    display: inline-block;
+    width:  100px;
+}
+#tutorial {
+    background-color: brown;
+}
