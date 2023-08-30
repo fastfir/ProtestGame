@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, make_response
 import psycopg2
 app = Flask(__name__)
+# I know these credentials are in the code, the server is only accessible to my internal network
 connection = psycopg2.connect(
     database="ProtestGame", user="postgres", password="Yel1owRhin01545", host="127.0.0.1", port="5432"
 )
