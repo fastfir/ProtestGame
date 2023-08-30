@@ -16,6 +16,8 @@ def tutorial():
 
 @app.route("/game")
 def game():
+    if (request.cookies.get("sessionID") == None):
+        return redirect("/login")
     return render_template("game.html")
 
 @app.route("/createacct", methods=['POST'])
@@ -44,13 +46,6 @@ def login():
                 response.set_cookie("sessionID",request.form["loginpassword"])
                 return response
             return "Password is incorrect"
-        
-@app.route("/dataLog", methods=["POST"])
-def dataLog():
-    with open("ips.txt","a") as ipfile:
-        ipfile.write("\n" + request.form['ip'])
-    return "Logged Successfully"
-
 @app.route("/gameLog", methods=['POST','GET'])
 def gameLog():
     if (request.method == 'GET'):

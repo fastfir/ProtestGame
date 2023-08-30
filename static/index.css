@@ -1,12 +1,18 @@
-#menutitle {
-    text-align: center
+body {
+    text-align: center;
+    background: lightgreen;
+    background-attachment: fixed;
 }
-#play {
-    background-color:lightgreen;
+#play {    
     color: tan;
     border: none;
-    display: inline-block;
-    width:  100px;
+    width:  150px;
+    height: 100px;
+    font-size: xx-large;
+}
+#login {
+    width: 100px;
+    height: 100px;
 }
 #tutorial {
     background-color: brown;
