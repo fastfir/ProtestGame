@@ -3,7 +3,7 @@ body {
     background: lightgreen;
     background-attachment: fixed;
 }
-#play {    
+#play {
     color: tan;
     border: none;
     width:  150px;
@@ -13,7 +13,11 @@ body {
 #login {
     width: 100px;
     height: 100px;
+    border: none;
 }
 #tutorial {
     background-color: brown;
+    border: none;
+    width: 100px;
+    height: 100px;
 }
