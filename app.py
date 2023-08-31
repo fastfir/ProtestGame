@@ -1,5 +1,8 @@
 from flask import Flask, render_template, redirect, request, make_response
 import psycopg2
+import secrets
+from datetime import timedelta
+import time
 app = Flask(__name__)
 # I know these credentials are in the code, the server is only accessible to my internal network
 connection = psycopg2.connect(
@@ -39,11 +42,17 @@ def login():
         db.execute("SELECT username,userpassword FROM gamedata WHERE username='" + request.form["loginusername"] + "';")
         dbresponse = db.fetchone()
         if (dbresponse == None):
-            return 
+            return "Username is incorrect"
         elif (dbresponse != None):
             if (request.form['loginpassword'] in dbresponse):
                 response = make_response(redirect("/game"))
-                response.set_cookie("sessionID",request.form["loginpassword"])
+                sessionID = secrets.token_urlsafe(32)
+                db.execute("SELECT userid FROM sessionid")
+                while (sessionID in db.fetchall()):
+                    sessionID = secrets.token_urlsafe(32)
+                db.execute("INSERT INTO sessionid VALUES('" + sessionID + "');")
+                connection.commit()
+                response.set_cookie("sessionID",sessionID,max_age=timedelta(hours=1),samesite="Lax")
                 return response
             return "Password is incorrect"
 @app.route("/gameLog", methods=['POST','GET'])
