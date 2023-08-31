@@ -39,8 +39,7 @@ def login():
         db.execute("SELECT username,userpassword FROM gamedata WHERE username='" + request.form["loginusername"] + "';")
         dbresponse = db.fetchone()
         if (dbresponse == None):
-            print(db.fetchone())
-            return "No account found for that username"
+            return 
         elif (dbresponse != None):
             if (request.form['loginpassword'] in dbresponse):
                 response = make_response(redirect("/game"))

@@ -4,23 +4,26 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/login.css">
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <script defer src="/static/login.js"></script>
 </head>
 <body>
     <h1> Create Account: </h1> <br>
-    <form action="/createacct" method="post">
+    <form id="accountform">
         <label for="username"> Username: </label>
         <input id="username" type="text" name="username">
         <label for="password"> Password: </label>
         <input id="password" type="password" name="password">
         <input id="submit" type="submit" value="Create Account">
     </form> <br><br><br><br>
+    <div id="accountresponse"></div>
     <h1> Login: </h1> <br>
-    <form action="/login" method="post">
+    <form id="loginform">
         <label for="loginusername"> Username: </label>
         <input id="loginusername" type="text" name="loginusername">
         <label for="loginpassword"> Password:</label>
         <input id="loginpassword" type="password" name="loginpassword">
         <input id="loginsubmit" type="submit" value="Login">
-    </form>
+    </form> <br><br><br>
+    <div id="loginresponse"></div>
 </body>
 </html>
