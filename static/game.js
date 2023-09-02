@@ -3,10 +3,16 @@ let player = {
     x: 950,
     y: 460,
 }
+let direction = {
+    left: false,
+    right: false,
+    down: false,
+    up: false,
+}
 const canvas = document.querySelector("#myCanvas")
 const ctx = canvas.getContext("2d");
-ctx.canvas.width = window.innerWidth
-ctx.canvas.height = window.innerHeight  
+ctx.canvas.width = 3000
+ctx.canvas.height = 2000
 
 let randomPositions = []
 for (var i=0;i<35;i++) {
@@ -14,8 +20,8 @@ for (var i=0;i<35;i++) {
     let randomY = Math.floor((Math.random()) * 7)
     randomPositions.push([randomX, randomY])
 }
-
 function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height)
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, 3000, 2000);
 
@@ -40,7 +46,7 @@ function draw() {
     ctx.fillStyle = "teal"
     ctx.fill(circle)
     ctx.stroke()
-    window.scrollTo(player.x,player.y)
+    window.scrollTo(player.x - 950,player.y - 460)
     
 }
 
@@ -48,19 +54,31 @@ function draw() {
 window.addEventListener("keydown", (e) => {
     switch (e.key) {
         case "a":
-            player.x -= 10
+            player.x -= 15
+            if (player.x <= 30) {
+                player.x = 30;
+            }
             draw();
             break;
         case "d":
-            player.x += 10
+            player.x += 15
+            if (player.x >= 2970) {
+                player.x = 2970;
+            }
             draw();
             break; 
         case "s":
-            player.y += 10
+            player.y += 15
+            if (player.y >= 1970) {
+                player.y = 1970;
+            }
             draw();
             break;
         case "w":
-            player.y -= 10
+            player.y -= 15
+            if (player.y <= 30) {
+                player.y = 30;
+            }
             draw();
             break;
     }
